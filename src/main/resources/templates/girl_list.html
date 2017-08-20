@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>CUPSIZE</th>
+        <th>AGE</th>
+        <th>MONEY</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="girl : ${girls}">
+        <td th:text="${girl.id}"></td>
+        <td th:text="${girl.cupSize}"></td>
+        <td th:text="${girl.age}"></td>
+        <td th:text="${girl.money}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

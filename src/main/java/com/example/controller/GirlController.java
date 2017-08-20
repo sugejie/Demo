@@ -1,6 +1,5 @@
 package com.example.controller;
 
-import com.example.aspect.HttpAspect;
 import com.example.entity.Girl;
 import com.example.entity.Result;
 import com.example.repository.GirlRepository;
@@ -13,12 +12,22 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 
+/**
+ * @Controller与@RestController的区别
+ * @Controller要配合模板使用，即跳转到页面，/girls使用了springboot默认模板thymeleaf
+ * @RestController相当于@Controller+@ResponseBody
+ *
+ * GirlController用@RestController结合PostMan工具测试json返回值,熟悉springboot和jpa的使用
+ * HelloController中测试了传统的MVC模式
+ */
 @RestController
 public class GirlController {
 
@@ -33,7 +42,7 @@ public class GirlController {
     @GetMapping(value = "/girls")
     public List<Girl> girlList() {
         logger.info("girlList");
-        return girlService.findAll();
+        return  girlService.findAll();
     }
 
     /**
